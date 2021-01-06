@@ -1,4 +1,4 @@
-{% set version = "0.1.5" %}
+{% set version = "0.1.5.post0" %}
 
 package:
   name: qdldl-python
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/q/qdldl/qdldl-{{ version }}.tar.gz
-  sha256: c136bdc3d3a35adfbad28cb8007e94b2b9315d13cf1bcab1ae8429674d18a593
+  sha256: c392c7427651d8b226423c7aba4a0f2338a1f38a4bbdabac6bc4afd8bc934f06
 
 build:
   number: 0
