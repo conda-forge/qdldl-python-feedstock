@@ -17,6 +17,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
+    - make  # [aarch64 or ppc64le]
   host:
     - python
     - pip
