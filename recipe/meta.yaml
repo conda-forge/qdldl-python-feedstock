@@ -9,7 +9,7 @@ source:
   sha256: c136bdc3d3a35adfbad28cb8007e94b2b9315d13cf1bcab1ae8429674d18a593
 
 build:
-  number: 2
+  number: 3
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -36,10 +36,11 @@ test:
     - pytest
   imports:
     - qdldl
-  source_files:
-    - tests/
-  commands:
-    - pytest tests
+  # Disabled tests due to issues in QEMU, see https://github.com/scipy/scipy/issues/14560
+  source_files:     # [not ppc64le]
+    - tests/        # [not ppc64le]
+  commands:         # [not ppc64le]
+    - pytest tests  # [not ppc64le]
 
 about:
   home: https://github.com/oxfordcontrol/qdldl-python
