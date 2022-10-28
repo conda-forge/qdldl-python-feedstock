@@ -7,6 +7,8 @@ package:
 source:
   url: https://pypi.io/packages/source/q/qdldl/qdldl-{{ version }}.tar.gz
   sha256: 7daf7ad1bfff1da71da06e82d5147bdb1ac866581617d8f06cc4eeda48e2a149
+  patches:
+    - patches/0001-use-Ninja-everywhere.patch
 
 build:
   number: 0
@@ -20,7 +22,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
-    - make  # [aarch64 or ppc64le]
+    - ninja
   host:
     - python
     - pip
