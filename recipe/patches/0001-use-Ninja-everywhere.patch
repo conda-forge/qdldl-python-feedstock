@@ -1,7 +1,7 @@
 From a004faa188ba13f0612abf68f85962c2458172a8 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Sat, 29 Oct 2022 09:39:17 +1100
-Subject: [PATCH] use Ninja everywhere
+Subject: [PATCH 1/2] use Ninja everywhere
 
 ---
  setup.py | 7 +------
