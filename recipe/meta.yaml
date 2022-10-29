@@ -1,15 +1,20 @@
-{% set version = "0.1.5" %}
+{% set version = "0.1.5.post2" %}
+{% set lib_ver = version.split(".")[:3] | join(".") %}
 
 package:
   name: qdldl-python
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/q/qdldl/qdldl-{{ version }}.tar.gz
-  sha256: c136bdc3d3a35adfbad28cb8007e94b2b9315d13cf1bcab1ae8429674d18a593
+  url: https://github.com/osqp/qdldl-python/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 8825a2f4aff86cbac5f2a9783bde9a6a454ab3937d34ae18ed0affaba775ed8c
+  patches:
+    - patches/0001-use-Ninja-everywhere.patch
+    - patches/0002-build-against-conda-forge-s-libqdldl.patch
+    - patches/0003-build-qdldlamd-as-shared-lib-and-install-it.patch
 
 build:
-  number: 2
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -20,10 +25,11 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake
-    - make  # [aarch64 or ppc64le]
+    - ninja
   host:
     - python
     - pip
+    - libqdldl ={{ lib_ver }}
     - numpy
     - pybind11
   run:
