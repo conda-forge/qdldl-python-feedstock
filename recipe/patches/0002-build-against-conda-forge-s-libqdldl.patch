@@ -1,7 +1,7 @@
 From f8f9c0b2359545527bce40796af2f03c3912dcc5 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Sat, 29 Oct 2022 09:20:52 +1100
-Subject: [PATCH 2/2] build against conda-forge's libqdldl
+Subject: [PATCH 2/3] build against conda-forge's libqdldl
 
 ---
  c/CMakeLists.txt                   | 8 +++-----

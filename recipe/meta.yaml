@@ -11,6 +11,7 @@ source:
   patches:
     - patches/0001-use-Ninja-everywhere.patch
     - patches/0002-build-against-conda-forge-s-libqdldl.patch
+    - patches/0003-build-qdldlamd-as-shared-lib-and-install-it.patch
 
 build:
   number: 0
