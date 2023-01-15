@@ -1,4 +1,4 @@
-{% set version = "0.1.5.post2" %}
+{% set version = "0.1.5.post3" %}
 {% set lib_ver = version.split(".")[:3] | join(".") %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/osqp/qdldl-python/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 8825a2f4aff86cbac5f2a9783bde9a6a454ab3937d34ae18ed0affaba775ed8c
+  sha256: e94c4e1aff653743633249d43b09413eeacc19040ba997f455ef9d545ace87b2
   patches:
     - patches/0001-use-Ninja-everywhere.patch
     - patches/0002-build-against-conda-forge-s-libqdldl.patch
@@ -43,9 +43,9 @@ test:
   imports:
     - qdldl
   # Disabled tests due to issues in QEMU, see https://github.com/scipy/scipy/issues/14560
-  source_files:     # [not ppc64le]
+  source_files:   # [not ppc64le]
     - tests/        # [not ppc64le]
-  commands:         # [not ppc64le]
+  commands:   # [not ppc64le]
     - pytest tests  # [not ppc64le]
 
 about:
