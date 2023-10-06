@@ -14,7 +14,7 @@ source:
     - patches/0003-build-qdldlamd-as-shared-lib-and-install-it.patch
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
