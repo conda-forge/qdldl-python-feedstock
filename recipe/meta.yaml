@@ -9,10 +9,10 @@ source:
   url: https://github.com/osqp/qdldl-python/archive/refs/tags/v.{{ version }}.tar.gz
   sha256: 0a58b0a44deafb7cfb89dc00b3b28a45b1f9da9d3f486503675476f8082c4ef3
   patches:
-    - patches/0001-Do-not-pass-CMAKE_GENERATOR-as-variable.patch
-    - patches/0002-use-Ninja-everywhere.patch
-    - patches/0003-build-against-conda-forge-s-libqdldl.patch
-    - patches/0004-build-qdldlamd-as-shared-lib-and-install-it.patch
+    - patches/0001-use-Ninja-everywhere.patch
+    - patches/0002-build-against-conda-forge-s-libqdldl.patch
+    - patches/0003-build-qdldlamd-as-shared-lib-and-install-it.patch
+    - patches/0004-Do-not-pass-CMAKE_GENERATOR-as-variable.patch
 
 build:
   number: 0
