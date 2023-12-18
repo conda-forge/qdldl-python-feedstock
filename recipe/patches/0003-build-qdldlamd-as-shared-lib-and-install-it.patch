@@ -1,7 +1,7 @@
-From 67068220aa774afedd6caeb326ed74dd3a887310 Mon Sep 17 00:00:00 2001
+From ea33b8e050da703d8432e0eba12dfbc6ec3d0e55 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Sat, 29 Oct 2022 11:16:16 +1100
-Subject: [PATCH 3/3] build qdldlamd as shared lib and install it
+Subject: [PATCH 3/4] build qdldlamd as shared lib and install it
 
 ---
  c/CMakeLists.txt |  8 +++++++-
@@ -29,16 +29,16 @@ index 33cd12e..000c6a5 100644
 +    ARCHIVE DESTINATION "lib"
 +)
 diff --git a/setup.py b/setup.py
-index acaebb5..f05886d 100644
+index cb66ac1..73c807f 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -36,18 +36,23 @@ class get_pybind_include(object):
- prefix = os.environ["LIBRARY_PREFIX"] if system() == 'Windows' else os.environ["PREFIX"]
+@@ -44,18 +44,23 @@ for cmake_env_var in cmake_env_vars:
+         cmake_args.extend([f'-D{cmake_env_var}={cmake_var}'])
  
  # Add parameters to cmake_args and define_macros
--cmake_args = ["-DUNITTESTS=OFF", "-GNinja"]
+-cmake_args += ["-DUNITTESTS=OFF", "-GNinja"]
 -cmake_build_flags = []
-+cmake_args = ["-DUNITTESTS=OFF", "-GNinja", f'-DCMAKE_INSTALL_PREFIX={prefix}']
++cmake_args += ["-DUNITTESTS=OFF", "-GNinja", f'-DCMAKE_INSTALL_PREFIX={prefix}']
 +cmake_build_flags = ['--config', 'Release']
  lib_subdir = []
  
@@ -63,7 +63,7 @@ index acaebb5..f05886d 100644
  
  # Set optimizer flag
  if system() != 'Windows':
-@@ -59,9 +64,6 @@ else:
+@@ -67,9 +72,6 @@ else:
  current_dir = os.getcwd()
  qdldl_dir = os.path.join(current_dir, 'c',)
  qdldl_build_dir = os.path.join(qdldl_dir, 'build')
@@ -73,7 +73,7 @@ index acaebb5..f05886d 100644
  
  class build_ext_qdldl(build_ext):
      def build_extensions(self):
-@@ -80,6 +82,7 @@ class build_ext_qdldl(build_ext):
+@@ -88,6 +90,7 @@ class build_ext_qdldl(build_ext):
          call(['cmake'] + cmake_args + ['..'])
          call(['cmake', '--build', '.', '--target', 'qdldlamd'] +
               cmake_build_flags)
@@ -81,7 +81,7 @@ index acaebb5..f05886d 100644
  
          # Change directory back to the python interface
          os.chdir(current_dir)
-@@ -96,7 +99,8 @@ qdldl = Extension('qdldl',
+@@ -104,7 +107,8 @@ qdldl = Extension('qdldl',
                                  get_pybind_include(user=False)],
                    language='c++',
                    extra_compile_args=compile_args + ['-std=c++11'],
@@ -91,6 +91,3 @@ index acaebb5..f05886d 100644
  
  
  def readme():
--- 
-2.38.1.windows.1
-

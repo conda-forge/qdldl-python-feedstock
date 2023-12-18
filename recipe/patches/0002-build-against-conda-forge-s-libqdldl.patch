@@ -1,7 +1,7 @@
-From f8f9c0b2359545527bce40796af2f03c3912dcc5 Mon Sep 17 00:00:00 2001
+From 6c64ad9f6e6ec118bdb29abfc447ca270d0f71be Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Sat, 29 Oct 2022 09:20:52 +1100
-Subject: [PATCH 2/3] build against conda-forge's libqdldl
+Subject: [PATCH 2/4] build against conda-forge's libqdldl
 
 ---
  c/CMakeLists.txt                   | 8 +++-----
@@ -78,7 +78,7 @@ index 16c2617..d1623f2 100644
  /**
   * C = A(p,p)= PAP' where A and C are symmetric the upper part stored;
 diff --git a/cpp/qdldl.hpp b/cpp/qdldl.hpp
-index 187dc34..46e404e 100644
+index 83b4970..1a7b5d1 100644
 --- a/cpp/qdldl.hpp
 +++ b/cpp/qdldl.hpp
 @@ -1,5 +1,5 @@
@@ -89,7 +89,7 @@ index 187dc34..46e404e 100644
  #include "amd/include/perm.h"
  #include <stdexcept>
 diff --git a/setup.py b/setup.py
-index 5c3c6bd..acaebb5 100644
+index 91f690e..cb66ac1 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -32,6 +32,8 @@ class get_pybind_include(object):
@@ -99,9 +99,9 @@ index 5c3c6bd..acaebb5 100644
 +# conda environment prefix
 +prefix = os.environ["LIBRARY_PREFIX"] if system() == 'Windows' else os.environ["PREFIX"]
  
- # Add parameters to cmake_args and define_macros
- cmake_args = ["-DUNITTESTS=OFF", "-GNinja"]
-@@ -89,7 +91,7 @@ class build_ext_qdldl(build_ext):
+ cmake_args = []
+ # What variables from the environment do we wish to pass on to cmake as variables?
+@@ -97,7 +99,7 @@ class build_ext_qdldl(build_ext):
  qdldl = Extension('qdldl',
                    sources=glob(os.path.join('cpp', '*.cpp')),
                    include_dirs=[os.path.join('c'),
@@ -110,6 +110,3 @@ index 5c3c6bd..acaebb5 100644
                                  get_pybind_include(),
                                  get_pybind_include(user=False)],
                    language='c++',
--- 
-2.38.1.windows.1
-
