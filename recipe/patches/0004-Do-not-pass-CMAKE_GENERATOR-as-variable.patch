@@ -1,4 +1,4 @@
-From 9ac757da1032df64df99664d20693fc14c3f7d83 Mon Sep 17 00:00:00 2001
+From 62b17dfaf6f86a84e51e3a49da835343031bf3dc Mon Sep 17 00:00:00 2001
 From: Adam Ehlers Nyholm Thomsen <aen@atp.dk>
 Date: Thu, 14 Dec 2023 11:43:33 +0100
 Subject: [PATCH 4/4] Do not pass CMAKE_GENERATOR as variable
@@ -17,7 +17,7 @@ definition to specify the generator given a prior cmake run.
  1 file changed, 1 insertion(+), 7 deletions(-)
 
 diff --git a/setup.py b/setup.py
-index 73c807f..bc04e3d 100644
+index 3790493..4f3a3a5 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -36,15 +36,9 @@ class get_pybind_include(object):
@@ -32,8 +32,8 @@ index 73c807f..bc04e3d 100644
 -        cmake_args.extend([f'-D{cmake_env_var}={cmake_var}'])
  
  # Add parameters to cmake_args and define_macros
--cmake_args += ["-DUNITTESTS=OFF", "-GNinja", f'-DCMAKE_INSTALL_PREFIX={prefix}']
-+cmake_args = ["-DUNITTESTS=OFF", "-GNinja", f'-DCMAKE_INSTALL_PREFIX={prefix}']
- cmake_build_flags = ['--config', 'Release']
+-cmake_args += ["-DUNITTESTS=OFF", "-GNinja", f'-DCMAKE_INSTALL_PREFIX={prefix}', '-DCMAKE_BUILD_TYPE=Release']
++cmake_args = ["-DUNITTESTS=OFF", "-GNinja", f'-DCMAKE_INSTALL_PREFIX={prefix}', '-DCMAKE_BUILD_TYPE=Release']
+ cmake_build_flags = []
  lib_subdir = []
  
