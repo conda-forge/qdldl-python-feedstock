@@ -1,12 +1,12 @@
-From ea33b8e050da703d8432e0eba12dfbc6ec3d0e55 Mon Sep 17 00:00:00 2001
+From 20523623c9a80454d0b6685c2a9d9128534a6f8e Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Sat, 29 Oct 2022 11:16:16 +1100
 Subject: [PATCH 3/4] build qdldlamd as shared lib and install it
 
 ---
  c/CMakeLists.txt |  8 +++++++-
- setup.py         | 26 +++++++++++++++-----------
- 2 files changed, 22 insertions(+), 12 deletions(-)
+ setup.py         | 24 ++++++++++++++----------
+ 2 files changed, 21 insertions(+), 11 deletions(-)
 
 diff --git a/c/CMakeLists.txt b/c/CMakeLists.txt
 index 33cd12e..000c6a5 100644
@@ -29,7 +29,7 @@ index 33cd12e..000c6a5 100644
 +    ARCHIVE DESTINATION "lib"
 +)
 diff --git a/setup.py b/setup.py
-index cb66ac1..73c807f 100644
+index cb66ac1..3790493 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -44,18 +44,23 @@ for cmake_env_var in cmake_env_vars:
@@ -37,9 +37,8 @@ index cb66ac1..73c807f 100644
  
  # Add parameters to cmake_args and define_macros
 -cmake_args += ["-DUNITTESTS=OFF", "-GNinja"]
--cmake_build_flags = []
-+cmake_args += ["-DUNITTESTS=OFF", "-GNinja", f'-DCMAKE_INSTALL_PREFIX={prefix}']
-+cmake_build_flags = ['--config', 'Release']
++cmake_args += ["-DUNITTESTS=OFF", "-GNinja", f'-DCMAKE_INSTALL_PREFIX={prefix}', '-DCMAKE_BUILD_TYPE=Release']
+ cmake_build_flags = []
  lib_subdir = []
  
  # Check if windows linux or mac to pass flag
