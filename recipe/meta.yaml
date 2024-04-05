@@ -1,4 +1,4 @@
-{% set version = "0.1.7.post0" %}
+{% set version = "0.1.7.post1" %}
 {% set lib_ver = version.split(".")[:3] | join(".") %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/osqp/qdldl-python/archive/refs/tags/v.{{ version }}.tar.gz
-  sha256: 0a58b0a44deafb7cfb89dc00b3b28a45b1f9da9d3f486503675476f8082c4ef3
+  sha256: 239ed6b6a4c6abd556ba8fee095f1e090895e19f466c41fea8038ede69639f25
   patches:
     - patches/0001-use-Ninja-everywhere.patch
     - patches/0002-build-against-conda-forge-s-libqdldl.patch
@@ -15,7 +15,7 @@ source:
     - patches/0004-Do-not-pass-CMAKE_GENERATOR-as-variable.patch
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -44,9 +44,9 @@ test:
   imports:
     - qdldl
   # Disabled tests due to issues in QEMU, see https://github.com/scipy/scipy/issues/14560
-  source_files:     # [not ppc64le]
+  source_files:   # [not ppc64le]
     - tests/        # [not ppc64le]
-  commands:         # [not ppc64le]
+  commands:   # [not ppc64le]
     - pytest tests  # [not ppc64le]
 
 about:

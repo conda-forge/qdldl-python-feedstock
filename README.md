@@ -406,6 +406,7 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@adament](https://github.com/adament/)
 * [@bstellato](https://github.com/bstellato/)
 * [@gbanjac](https://github.com/gbanjac/)
 * [@h-vetinari](https://github.com/h-vetinari/)
