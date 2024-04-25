@@ -1,4 +1,4 @@
-{% set version = "0.1.7.post1" %}
+{% set version = "0.1.7.post2" %}
 {% set lib_ver = version.split(".")[:3] | join(".") %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/osqp/qdldl-python/archive/refs/tags/v.{{ version }}.tar.gz
-  sha256: 239ed6b6a4c6abd556ba8fee095f1e090895e19f466c41fea8038ede69639f25
+  sha256: fa3294d5be792df52e53aaa4373c37f36f66661a86b8629bda8691b39245dcb5
   patches:
     - patches/0001-use-Ninja-everywhere.patch
     - patches/0002-build-against-conda-forge-s-libqdldl.patch
@@ -24,6 +24,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - cmake
     - ninja
