@@ -15,7 +15,7 @@ source:
     - patches/0004-Do-not-pass-CMAKE_GENERATOR-as-variable.patch
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
@@ -36,7 +36,6 @@ requirements:
     - pybind11
   run:
     - python
-    - {{ pin_compatible('numpy') }}
     - scipy
 
 test:
