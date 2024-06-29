@@ -15,8 +15,8 @@ index 47b2ab6..91f690e 100644
          cmake_args.extend([f'-D{cmake_env_var}={cmake_var}'])
  
  # Add parameters to cmake_args and define_macros
--cmake_args += ["-DUNITTESTS=OFF"]
-+cmake_args += ["-DUNITTESTS=OFF", "-GNinja"]
+-cmake_args += ["-DQDLDL_UNITTESTS=OFF"]
++cmake_args += ["-DQDLDL_UNITTESTS=OFF", "-GNinja"]
  cmake_build_flags = []
  lib_subdir = []
  

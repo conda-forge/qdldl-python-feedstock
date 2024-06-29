@@ -36,8 +36,8 @@ index cb66ac1..3790493 100644
          cmake_args.extend([f'-D{cmake_env_var}={cmake_var}'])
  
  # Add parameters to cmake_args and define_macros
--cmake_args += ["-DUNITTESTS=OFF", "-GNinja"]
-+cmake_args += ["-DUNITTESTS=OFF", "-GNinja", f'-DCMAKE_INSTALL_PREFIX={prefix}', '-DCMAKE_BUILD_TYPE=Release']
+-cmake_args += ["-DQDLDL_UNITTESTS=OFF", "-GNinja"]
++cmake_args += ["-DQDLDL_UNITTESTS=OFF", "-GNinja", f'-DCMAKE_INSTALL_PREFIX={prefix}', '-DCMAKE_BUILD_TYPE=Release']
  cmake_build_flags = []
  lib_subdir = []
  
