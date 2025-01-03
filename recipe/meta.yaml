@@ -1,4 +1,4 @@
-{% set version = "0.1.7.post4" %}
+{% set version = "0.1.7.post5" %}
 {% set lib_ver = version.split(".")[:3] | join(".") %}
 
 package:
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/osqp/qdldl-python/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 5cb60c725013d5e6fbc1eac0e38b206fb693882b061a41dcde0f720b7492b549
+  sha256: 498002a3826dca9d03186972ca82ee8acb930127ea5603b94a845327ffa98a7c
   patches:
     - patches/0001-use-Ninja-everywhere.patch
     - patches/0002-build-against-conda-forge-s-libqdldl.patch
@@ -15,7 +15,7 @@ source:
     - patches/0004-Do-not-pass-CMAKE_GENERATOR-as-variable.patch
 
 build:
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
