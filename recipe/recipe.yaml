@@ -1,14 +1,13 @@
 context:
-  name: qdldl-python
   version: 0.1.7.post5
   lib_ver: ${{ (version | split("."))[:3] | join(".") }}
 
 package:
-  name: ${{ name|lower }}
+  name: qdldl-python
   version: ${{ version }}
 
 source:
-  url: https://github.com/osqp/${{ name }}/archive/refs/tags/v${{ version }}.tar.gz
+  url: https://github.com/osqp/qdldl-python/archive/refs/tags/v${{ version }}.tar.gz
   sha256: 498002a3826dca9d03186972ca82ee8acb930127ea5603b94a845327ffa98a7c
   patches:
     - patches/0001-use-Ninja-everywhere.patch
