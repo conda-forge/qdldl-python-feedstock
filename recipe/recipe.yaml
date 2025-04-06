@@ -47,17 +47,17 @@ tests:
   - python:
       imports:
         - qdldl
-  - script:
-      # Disabled tests due to issues in QEMU, see https://github.com/scipy/scipy/issues/14560
-      - if: not ppc64le
-        then: pytest tests
-        else: echo skipped
-    requirements:
+  - requirements:
       run:
         - pytest
     files:
       source:
         - tests/
+    script:
+      # Disabled tests due to issues in QEMU, see https://github.com/scipy/scipy/issues/14560
+      - if: not ppc64le
+        then: pytest tests
+        else: echo skipped
 
 about:
   homepage: https://github.com/oxfordcontrol/qdldl-python
