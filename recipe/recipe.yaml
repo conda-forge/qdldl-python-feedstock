@@ -1,6 +1,7 @@
 context:
   version: 0.1.7.post5
-  lib_ver: ${{ (version | split("."))[:3] | join(".") }}
+#  lib_ver: ${{ (version | split("."))[:3] | join(".") }}
+  lib_ver: 0.1.8
 
 package:
   name: qdldl-python
@@ -16,7 +17,7 @@ source:
     - patches/0004-Do-not-pass-CMAKE_GENERATOR-as-variable.patch
 
 build:
-  number: 1
+  number: 2
   script:
     - python -m pip install . -vv
 
