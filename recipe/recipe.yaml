@@ -1,5 +1,5 @@
 context:
-  version: 0.1.7.post5
+  version: "0.1.9"
 #  lib_ver: ${{ (version | split("."))[:3] | join(".") }}
   lib_ver: 0.1.8
 
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/osqp/qdldl-python/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 498002a3826dca9d03186972ca82ee8acb930127ea5603b94a845327ffa98a7c
+  sha256: 97f44eda6e89a139cb95eddb43f3e7f40936db368ee878255444973eeca1b8c9
   patches:
     - patches/0001-use-Ninja-everywhere.patch
     - patches/0002-build-against-conda-forge-s-libqdldl.patch
@@ -17,7 +17,7 @@ source:
     - patches/0004-Do-not-pass-CMAKE_GENERATOR-as-variable.patch
 
 build:
-  number: 3
+  number: 0
   script:
     - python -m pip install . -vv
 
