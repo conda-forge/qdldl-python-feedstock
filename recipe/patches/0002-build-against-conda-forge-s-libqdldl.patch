@@ -1,22 +1,22 @@
-From 6c64ad9f6e6ec118bdb29abfc447ca270d0f71be Mon Sep 17 00:00:00 2001
+From cc9ffe2d0ae883ad7731a3ea1470c05fcce65995 Mon Sep 17 00:00:00 2001
 From: "H. Vetinari" <h.vetinari@gmx.com>
 Date: Sat, 29 Oct 2022 09:20:52 +1100
 Subject: [PATCH 2/4] build against conda-forge's libqdldl
 
 ---
- c/CMakeLists.txt                   | 8 +++-----
+ c/CMakeLists.txt                   | 9 +++------
  c/amd/include/SuiteSparse_config.h | 2 +-
  c/amd/include/amd_internal.h       | 2 +-
  c/amd/include/perm.h               | 2 +-
  cpp/qdldl.hpp                      | 2 +-
- setup.py                           | 4 +++-
- 6 files changed, 10 insertions(+), 10 deletions(-)
+ setup.py                           | 5 +++--
+ 6 files changed, 10 insertions(+), 12 deletions(-)
 
 diff --git a/c/CMakeLists.txt b/c/CMakeLists.txt
-index 8c3835d..33cd12e 100644
+index a98b7a5..6a08bec 100644
 --- a/c/CMakeLists.txt
 +++ b/c/CMakeLists.txt
-@@ -6,9 +6,7 @@ project (qdldl_amd)
+@@ -10,9 +10,7 @@ endif()
  # Needed for compilation to succeed
  set(CMAKE_POSITION_INDEPENDENT_CODE ON)
  
@@ -27,7 +27,7 @@ index 8c3835d..33cd12e 100644
  
  set(
      amd_src
-@@ -33,8 +31,8 @@ set(
+@@ -37,9 +35,8 @@ set(
  
  
  # Add QDLDL+AMD library
@@ -37,6 +37,7 @@ index 8c3835d..33cd12e 100644
  target_include_directories(qdldlamd PRIVATE
  	                   ${CMAKE_CURRENT_SOURCE_DIR}/amd/include
 -	                   ${CMAKE_CURRENT_SOURCE_DIR}/qdldl/include
+-                       ${CMAKE_CURRENT_BINARY_DIR}/qdldl/include
  			    )
 diff --git a/c/amd/include/SuiteSparse_config.h b/c/amd/include/SuiteSparse_config.h
 index ea3cea4..19ac8df 100644
@@ -89,7 +90,7 @@ index 83b4970..1a7b5d1 100644
  #include "amd/include/perm.h"
  #include <stdexcept>
 diff --git a/setup.py b/setup.py
-index 91f690e..cb66ac1 100644
+index 684663d..4fa6522 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -32,6 +32,8 @@ class get_pybind_include(object):
@@ -101,11 +102,12 @@ index 91f690e..cb66ac1 100644
  
  cmake_args = []
  # What variables from the environment do we wish to pass on to cmake as variables?
-@@ -97,7 +99,7 @@ class build_ext_qdldl(build_ext):
+@@ -97,8 +99,7 @@ class build_ext_qdldl(build_ext):
  qdldl = Extension('qdldl',
                    sources=glob(os.path.join('cpp', '*.cpp')),
                    include_dirs=[os.path.join('c'),
 -                                os.path.join('c', 'qdldl', 'include'),
+-                                os.path.join(qdldl_build_dir, 'qdldl', 'include'),
 +                                os.path.join(prefix, 'include'),
                                  get_pybind_include(),
                                  get_pybind_include(user=False)],
