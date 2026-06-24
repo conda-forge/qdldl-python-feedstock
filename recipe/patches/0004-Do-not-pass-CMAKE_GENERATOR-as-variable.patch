@@ -1,4 +1,4 @@
-From 62b17dfaf6f86a84e51e3a49da835343031bf3dc Mon Sep 17 00:00:00 2001
+From e3f968d8bd0f81a934c3a8f4a18fc05b2fd2cdf6 Mon Sep 17 00:00:00 2001
 From: Adam Ehlers Nyholm Thomsen <aen@atp.dk>
 Date: Thu, 14 Dec 2023 11:43:33 +0100
 Subject: [PATCH 4/4] Do not pass CMAKE_GENERATOR as variable
@@ -17,7 +17,7 @@ definition to specify the generator given a prior cmake run.
  1 file changed, 1 insertion(+), 7 deletions(-)
 
 diff --git a/setup.py b/setup.py
-index 3790493..4f3a3a5 100644
+index 198287f..1026b2a 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -36,15 +36,9 @@ class get_pybind_include(object):
