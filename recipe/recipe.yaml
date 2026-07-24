@@ -17,7 +17,7 @@ source:
     - patches/0004-Do-not-pass-CMAKE_GENERATOR-as-variable.patch
 
 build:
-  number: 0
+  number: 1
   script:
     - python -m pip install . -vv
 
